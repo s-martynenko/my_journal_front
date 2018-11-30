@@ -1,3 +1,22 @@
-<p>
-  register works!
-</p>
+<form #registerForm="ngForm" (ngSubmit)="registerSubmit(registerForm)">
+  <label>username</label>
+  <input type="text" name="username" ngModel minlength="4" maxlength="16" required #username="ngModel">
+  <div *ngIf="!username.valid && username.touched">
+    Username should be min 4 and max 16
+  </div>
+  <br>
+  <label>email</label>
+  <input type="text" name="email" ngModel required>
+  <br>
+  <label>password</label>
+  <input type="password" name="password" ngModel required appPasswordRules #password="ngModel">
+  <div *ngIf="!password.valid && password.touched && password.errors.violaterules === true">
+    Password violates rules
+  </div>
+  <br>
+  <label>confirm password</label>
+  <input type="password" name="passwordConfirmation" ngModel required>
+  <br>
+  <button type="submit" [disabled]="!registerForm.valid || !registerForm.touched">register</button>
+  <button type="button">just btn</button>
+</form>
