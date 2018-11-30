@@ -8,6 +8,7 @@ import {SharedModule} from './shared/shared.module';
 import { WelcomeComponent } from './common/welcome/welcome.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import {AuthModule} from './auth/auth.module';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {AuthModule} from './auth/auth.module';
     BrowserModule,
     AuthModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
