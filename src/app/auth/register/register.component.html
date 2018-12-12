@@ -27,7 +27,7 @@
       <mat-form-field>
         <mat-label>Confirm password</mat-label>
         <input matInput type="password" name="passwordConfirmation" ngModel required #passwordConfirmation="ngModel">
-        <mat-error *ngIf="!passwordConfirmation.valid">
+        <mat-error *ngIf="!passwordConfirmation.valid && passwordConfirmation.errors.donotmatch === true">
           Password confirmation do not match
         </mat-error>
       </mat-form-field>
@@ -35,5 +35,6 @@
       <br>
       <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid || !registerForm.touched">Register</button>
     </form>
+    <span *ngIf="errorMessage" style="color: red">{{errorMessage}}</span>
   </mat-card-content>
 </mat-card>
