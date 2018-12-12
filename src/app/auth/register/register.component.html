@@ -1,22 +1,39 @@
-<form #registerForm="ngForm" (ngSubmit)="registerSubmit(registerForm)">
-  <label>username</label>
-  <input type="text" name="username" ngModel minlength="4" maxlength="16" required #username="ngModel">
-  <div *ngIf="!username.valid && username.touched">
-    Username should be min 4 and max 16
-  </div>
-  <br>
-  <label>email</label>
-  <input type="text" name="email" ngModel required>
-  <br>
-  <label>password</label>
-  <input type="password" name="password" ngModel required appPasswordRules #password="ngModel">
-  <div *ngIf="!password.valid && password.touched && password.errors.violaterules === true">
-    Password violates rules
-  </div>
-  <br>
-  <label>confirm password</label>
-  <input type="password" name="passwordConfirmation" ngModel required>
-  <br>
-  <button type="submit" [disabled]="!registerForm.valid || !registerForm.touched">register</button>
-  <button type="button">just btn</button>
-</form>
+<mat-card class="register-card">
+  <mat-card-header>
+    <mat-card-title>
+      New user registration
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #registerForm="ngForm" (ngSubmit)="registerSubmit(registerForm)">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="text" name="username" ngModel minlength="4" maxlength="50" required #username="ngModel">
+        <mat-error *ngIf="!username.valid && username.touched">
+          Username should be min 4 and max 50 symbols
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" name="password" ngModel required appPasswordRules #password="ngModel">
+        <mat-error *ngIf="!password.valid && password.touched && password.errors.violaterules === true">
+          Password should be min 4 and max 50 characters and should contain at least 1 digit
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-form-field>
+        <mat-label>Confirm password</mat-label>
+        <input matInput type="password" name="passwordConfirmation" ngModel required #passwordConfirmation="ngModel">
+        <mat-error *ngIf="!passwordConfirmation.valid">
+          Password confirmation do not match
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid || !registerForm.touched">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>

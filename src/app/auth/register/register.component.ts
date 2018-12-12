@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  registerSubmit(form: NgForm){
+  registerSubmit(form: NgForm) {
   console.log(form);
+  if (form.controls.password.value !== form.controls.passwordConfirmation.value) {
+    console.log('WRONG');
+    // form.controls.passwordConfirmation.valid = false;
+  }
   }
 }

@@ -1,10 +1,31 @@
-<div class="example-container">
-  <mat-form-field>
-    <input matInput #input placeholder="Login" required>
-  </mat-form-field>
-  <mat-form-field hintLabel="Max 10 characters">
-    <input matInput #input maxlength="10" placeholder="Password" required>
-    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-  </mat-form-field>
-   <button mat-raised-button routerLink="register">Register</button>
-</div>
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>
+      Log in
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="text" name="username" ngModel minlength="4" maxlength="50" required #username="ngModel">
+        <mat-error *ngIf="!username.valid && username.touched">
+          Username should be min 4 and max 50 symbols
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" name="password" ngModel maxlength="50" required #password="ngModel">
+        <mat-error *ngIf="!password.valid && password.touched">
+          Password should be max 50 characters
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || !loginForm.touched">Log In</button>
+      <button mat-raised-button type="button" routerLink="../register">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>
