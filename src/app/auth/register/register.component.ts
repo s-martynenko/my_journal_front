@@ -23,9 +23,11 @@ export class RegisterComponent implements OnInit {
   if (form.controls.password.value !== form.controls.passwordConfirmation.value) {
     console.log('WRONG');
     form.controls.passwordConfirmation.setErrors({donotmatch: true});
+    form.controls.passwordConfirmation.markAsUntouched();
+    form.controls.password.markAsUntouched();
     console.log(form);
   }
-  if (form.valid){
+  if (form.valid) {
     this.authSvc.registerUser(form.controls.username.value, form.controls.password.value, form.controls.passwordConfirmation.value).subscribe(
       (response) => {
         this.router.navigate(['/login', {registered: 'success'}]);

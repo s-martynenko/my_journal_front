@@ -5,6 +5,8 @@
 mat-form-field{
   width: 100%;
 }
-/*input.ng-invalid.ng-touched{
-  color:red;
-}*/
+.register-error{
+  display: block;
+  color: red;
+  font-weight: bold;
+}
