@@ -30,8 +30,10 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatCardModule,
     MatInputModule
-  ]
+  ],
+  providers: []
 })
-export class SharedModule{
+
+export class SharedModule {
 
 }

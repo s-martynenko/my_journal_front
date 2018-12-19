@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +10,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   errorMessage: string = null;
+  infoMessage: string = null;
 
   constructor(private authSvc: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['registered'] === 'success') {
+        this.infoMessage = 'You\'ve been successfully registered, please log in';
+      }
+    });
   }
 
   loginSubmit(form: NgForm) {
@@ -26,7 +33,7 @@ export class LoginComponent implements OnInit {
           if (token) {
             //some actions
             console.log(token);
-            //this.router.navigate();
+            this.router.navigate(['/month']);
           } else {
             this.errorMessage = 'Could not authenticate user';
           }

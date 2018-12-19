@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <a routerLink="">My journal</a>
+    <span (click)="mainPageRedirect()" class="menu-link">My journal</span>
     <span class="fill-space"></span>
     <span>Monthly log</span>
     <span class="fill-space"></span>
@@ -10,7 +10,7 @@
     <span class="fill-space"></span>
     <span>Username</span>
     <span class="fill-space"></span>
-    <mat-icon class="menu-icon">exit_to_app</mat-icon>
+    <mat-icon (click)="logOut()" *ngIf="isAuth" class="menu-icon menu-link">exit_to_app</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
