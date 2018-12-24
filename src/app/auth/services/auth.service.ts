@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as moment from 'moment';
-import {Subject} from 'rxjs/index';
+import { Subject } from 'rxjs/index';
 
 
 @Injectable({

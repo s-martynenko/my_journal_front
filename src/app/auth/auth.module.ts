@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { PasswordRulesDirective } from './validators/password-rules.directive';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,14 @@ import { PasswordRulesDirective } from './validators/password-rules.directive';
     SharedModule,
     FormsModule
   ],
-  declarations: [RegisterComponent, LoginComponent, PasswordRulesDirective]
+  declarations: [
+    RegisterComponent,
+    LoginComponent,
+    PasswordRulesDirective,
+    PasswordChangeComponent
+  ],
+  exports: [
+    PasswordChangeComponent
+  ]
 })
 export class AuthModule {}

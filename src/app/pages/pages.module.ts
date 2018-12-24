@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { MonthComponent } from './month/month.component';
+import { AuthModule } from '../auth/auth.module';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
-  declarations: [MonthComponent],
+  declarations: [MonthComponent, SettingsComponent],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    AuthModule
   ]
 })
 export class PagesModule { }
