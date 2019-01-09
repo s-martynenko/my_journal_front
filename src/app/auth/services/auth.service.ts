@@ -30,7 +30,7 @@ export class AuthService {
     return this.http.post(this.USERS_URL + '/register', data);
   }
 
-  public loginUser(username: string, password: string){
+  public loginUser(username: string, password: string) {
     const data = {username: username, password: password};
     return this.http.post(this.USERS_URL + '/login', data).pipe(
       map((response: any) => {
@@ -42,12 +42,25 @@ export class AuthService {
     );
   }
 
+  public changeUserPassword(oldPassword: string, newPassword: string, passwordConfirmation: string) {
+    const data = {oldPassword: oldPassword, newPassword: newPassword, passwordConfirmation: passwordConfirmation};
+    return this.http.patch(this.USERS_URL + '/password', data);
+  }
+
+  getUsername() {
+    this.http.get(this.USERS_URL + '/user-info').subscribe(
+      (response: any) => {
+        console.log(response.username);
+      return response.username;
+      });
+  }
+
   getTokenFromStorage() {
     const token = localStorage.getItem(this.tokenKey);
     return token;
   }
 
-  getToken(){
+  getToken() {
     return this.token;
   }
 

@@ -21,9 +21,8 @@ export class RegisterComponent implements OnInit {
   registerSubmit(form: NgForm) {
     this.errorMessage = null;
   if (form.controls.password.value !== form.controls.passwordConfirmation.value) {
-    console.log('WRONG');
+    form.controls.passwordConfirmation.reset();
     form.controls.passwordConfirmation.setErrors({donotmatch: true});
-    form.controls.passwordConfirmation.markAsUntouched();
     form.controls.password.markAsUntouched();
     console.log(form);
   }
