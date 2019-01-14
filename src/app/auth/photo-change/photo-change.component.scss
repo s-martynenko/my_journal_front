@@ -1,0 +1,17 @@
+.photo-card{
+  max-width: 500px;
+  margin-top: 10px;
+  button {
+    margin-right: 8px;
+  }
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+.settings-error{
+  display: block;
+  color: red;
+  font-weight: bold;
+}

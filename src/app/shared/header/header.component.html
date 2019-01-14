@@ -2,13 +2,13 @@
   <mat-toolbar-row>
     <span (click)="mainPageRedirect()" class="menu-link">My journal</span>
     <span class="fill-space"></span>
-    <span routerLink="../month" style="cursor: pointer">Monthly log</span>
+    <span *ngIf="isAuth" routerLink="../month" style="cursor: pointer">Monthly log</span>
     <span class="fill-space"></span>
-    <span>Habit tracker</span>
+    <span *ngIf="isAuth">Habit tracker</span>
     <span class="fill-space"></span>
-    <span routerLink="../settings" style="cursor: pointer">Settings</span>
+    <span *ngIf="isAuth" routerLink="../settings" style="cursor: pointer">Settings</span>
     <span class="fill-space"></span>
-    <span>Username</span>
+    <span *ngIf="isAuth">{{userName}}</span>
     <span class="fill-space"></span>
     <mat-icon (click)="logOut()" *ngIf="isAuth" class="menu-icon menu-link">exit_to_app</mat-icon>
   </mat-toolbar-row>

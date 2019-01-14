@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { PasswordRulesDirective } from './validators/password-rules.directive';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { PhotoChangeComponent } from './photo-change/photo-change.component';
 
 @NgModule({
   imports: [
@@ -19,10 +20,12 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     RegisterComponent,
     LoginComponent,
     PasswordRulesDirective,
-    PasswordChangeComponent
+    PasswordChangeComponent,
+    PhotoChangeComponent
   ],
   exports: [
-    PasswordChangeComponent
+    PasswordChangeComponent,
+    PhotoChangeComponent
   ]
 })
 export class AuthModule {}

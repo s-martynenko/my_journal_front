@@ -47,12 +47,8 @@ export class AuthService {
     return this.http.patch(this.USERS_URL + '/password', data);
   }
 
-  getUsername() {
-    this.http.get(this.USERS_URL + '/user-info').subscribe(
-      (response: any) => {
-        console.log(response.username);
-      return response.username;
-      });
+  getUserInfo() {
+    return this.http.get(this.USERS_URL + '/user-info');
   }
 
   getTokenFromStorage() {
