@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { PasswordRulesDirective } from './validators/password-rules.directive';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { PhotoChangeComponent } from './photo-change/photo-change.component';
+import { PhotoUrlRulesDirective } from './validators/photo-url-rules.directive';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { PhotoChangeComponent } from './photo-change/photo-change.component';
     LoginComponent,
     PasswordRulesDirective,
     PasswordChangeComponent,
-    PhotoChangeComponent
+    PhotoChangeComponent,
+    PhotoUrlRulesDirective
   ],
   exports: [
     PasswordChangeComponent,

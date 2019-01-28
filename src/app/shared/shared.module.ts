@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { ImageCacheDirective } from './directives/image-cache.directive';
 
 
 @NgModule({
@@ -22,12 +23,14 @@ import { MatCardModule } from '@angular/material/card';
     RouterModule
   ],
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    ImageCacheDirective
   ],
   exports: [
     HeaderComponent,
     MatFormFieldModule,
     MatButtonModule,
+    MatIconModule,
     MatCardModule,
     MatInputModule
   ],

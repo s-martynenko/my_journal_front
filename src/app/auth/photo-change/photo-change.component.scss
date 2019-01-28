@@ -15,3 +15,17 @@ mat-form-field{
   color: red;
   font-weight: bold;
 }
+
+.settings-ok{
+  display: block;
+  color: green;
+  font-weight: bold;
+}
+
+.user-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}

@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
       this.authSvc.loginUser(form.controls.username.value, form.controls.password.value).subscribe(
         (token) => {
           if (token) {
-            //some actions
             console.log(token);
             this.router.navigate(['/month']);
           } else {

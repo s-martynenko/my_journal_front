@@ -47,10 +47,6 @@ export class AuthService {
     return this.http.patch(this.USERS_URL + '/password', data);
   }
 
-  getUserInfo() {
-    return this.http.get(this.USERS_URL + '/user-info');
-  }
-
   getTokenFromStorage() {
     const token = localStorage.getItem(this.tokenKey);
     return token;
