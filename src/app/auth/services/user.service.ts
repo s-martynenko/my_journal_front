@@ -12,7 +12,7 @@ export class UserService {
 
   protected USERS_URL = API_URL + '/api/v1/users';
 
-  photoChanged = new Subject<boolean>();
+  photoChanged = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,8 @@ export class UserService {
     const data = {photoUrl: photoUrl};
     return this.http.patch(this.USERS_URL + '/photo', data).pipe(
       map((response: any) => {
-        this.photoChanged.next(true);
+        console.log(response);
+        this.photoChanged.next(response.photoUrl);
       })
     );
   }

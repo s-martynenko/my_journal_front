@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
     form.controls.passwordConfirmation.reset();
     form.controls.passwordConfirmation.setErrors({donotmatch: true});
     form.controls.password.markAsUntouched();
-    console.log(form);
   }
   if (form.valid) {
     this.authSvc.registerUser(form.controls.username.value, form.controls.password.value, form.controls.passwordConfirmation.value).subscribe(

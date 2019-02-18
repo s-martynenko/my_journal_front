@@ -23,7 +23,6 @@ export class PasswordChangeComponent implements OnInit {
       form.controls.passwordConfirmation.reset();
       form.controls.passwordConfirmation.setErrors({donotmatch: true});
       form.controls.newPassword.markAsUntouched();
-      console.log(form);
     }
     if (form.valid) {
       this.authSvc.changeUserPassword(form.controls.oldPassword.value, form.controls.newPassword.value, form.controls.passwordConfirmation.value).subscribe(

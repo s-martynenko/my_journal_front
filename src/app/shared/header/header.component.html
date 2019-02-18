@@ -9,7 +9,7 @@
     <span *ngIf="isAuth" routerLink="../settings" style="cursor: pointer">Settings</span>
     <span class="fill-space"></span>
     <span *ngIf="isAuth" class="menu-username">{{userName}}</span>
-    <img *ngIf="isAuth && userPhotoUrl != null" class="menu-avatar" src="{{userPhotoUrl}}">
+    <img *ngIf="isAuth && userPhotoUrl != null" class="menu-avatar" [src]="userPhotoUrl" >
     <mat-icon *ngIf="isAuth && userPhotoUrl == null" class="menu-icon">face</mat-icon>
     <mat-icon (click)="logOut()" *ngIf="isAuth" class="menu-icon menu-link">exit_to_app</mat-icon>
   </mat-toolbar-row>
