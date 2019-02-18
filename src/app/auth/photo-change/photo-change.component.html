@@ -1,0 +1,27 @@
+<mat-card class="photo-card">
+  <mat-card-header>
+    <img mat-card-avatar *ngIf="userPhotoUrl != null" src="{{userPhotoUrl}}">
+    <mat-icon mat-card-avatar *ngIf="userPhotoUrl == null" class="menu-icon">face</mat-icon>
+
+    <mat-card-title>
+      Add or change photo
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <br>
+    <form #photoForm="ngForm" (ngSubmit)="photoSubmit(photoForm)">
+      <mat-form-field>
+        <mat-label>Photo URL</mat-label>
+        <input matInput type="url" name="photo" appPhotoUrlRules ngModel #photo="ngModel" value="{{userPhotoUrl}}">
+        <mat-error *ngIf="!photo.valid && photo.dirty && photo.errors.violaterules === true">
+          Photo URL should contain image with one of these types: jpg|jpeg|gif|png|bmp|svg
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <span *ngIf="okMessage && photo.untouched" class="settings-ok">{{okMessage}}</span>
+      <span *ngIf="errorMessage" class="settings-error">{{errorMessage}}</span>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!photoForm.valid || !photoForm.dirty">Save changes</button>
+    </form>
+  </mat-card-content>
+</mat-card>

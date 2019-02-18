@@ -1,0 +1,31 @@
+.photo-card{
+  max-width: 500px;
+  margin-top: 10px;
+  button {
+    margin-right: 8px;
+  }
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+.settings-error{
+  display: block;
+  color: red;
+  font-weight: bold;
+}
+
+.settings-ok{
+  display: block;
+  color: green;
+  font-weight: bold;
+}
+
+.user-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}

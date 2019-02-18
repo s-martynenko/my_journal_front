@@ -1,16 +1,17 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span>My journal</span>
+    <span (click)="mainPageRedirect()" class="menu-link">My journal</span>
     <span class="fill-space"></span>
-    <span>Monthly log</span>
+    <span *ngIf="isAuth" routerLink="../month" style="cursor: pointer">Monthly log</span>
     <span class="fill-space"></span>
-    <span>Habit tracker</span>
+    <span *ngIf="isAuth">Habit tracker</span>
     <span class="fill-space"></span>
-    <span>Settings</span>
+    <span *ngIf="isAuth" routerLink="../settings" style="cursor: pointer">Settings</span>
     <span class="fill-space"></span>
-    <span>Username</span>
-    <span class="fill-space"></span>
-    <mat-icon class="menu-icon">exit_to_app</mat-icon>
+    <span *ngIf="isAuth" class="menu-username">{{userName}}</span>
+    <img *ngIf="isAuth && userPhotoUrl != null" class="menu-avatar" [src]="userPhotoUrl" >
+    <mat-icon *ngIf="isAuth && userPhotoUrl == null" class="menu-icon">face</mat-icon>
+    <mat-icon (click)="logOut()" *ngIf="isAuth" class="menu-icon menu-link">exit_to_app</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
