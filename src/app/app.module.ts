@@ -9,10 +9,12 @@ import { SharedModule } from './shared/shared.module';
 import { WelcomeComponent } from './common/welcome/welcome.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { AuthModule } from './auth/auth.module';
+import { MonthModule } from './month/month.module';
 import { MatCardModule } from '@angular/material/card';
 import { AuthService } from './auth/services/auth.service';
 import { PagesModule } from './pages/pages.module';
 import { TokenInterceptor } from './auth/interceptors/token.interceptor';
+
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { TokenInterceptor } from './auth/interceptors/token.interceptor';
     BrowserModule,
     AuthModule,
     PagesModule,
+    MonthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,

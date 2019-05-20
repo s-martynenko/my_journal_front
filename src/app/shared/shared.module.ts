@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ImageCacheDirective } from './directives/image-cache.directive';
 
 
@@ -20,6 +21,7 @@ import { ImageCacheDirective } from './directives/image-cache.directive';
     MatButtonModule,
     MatInputModule,
     MatCardModule,
+    MatDatepickerModule,
     RouterModule
   ],
   declarations: [
@@ -32,6 +34,7 @@ import { ImageCacheDirective } from './directives/image-cache.directive';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    MatDatepickerModule,
     MatInputModule
   ],
   providers: []

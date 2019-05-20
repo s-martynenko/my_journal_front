@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/guards/auth.guard';
-import { SettingsComponent } from './settings/settings.component';
+import { MonthPageComponent } from './month-page/month-page.component';
 
 const routes: Routes = [{
-  path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]
+  path: 'month', component: MonthPageComponent, canActivate: [AuthGuard]
 }];
 
 @NgModule({
@@ -12,4 +12,4 @@ const routes: Routes = [{
   exports: [RouterModule],
   providers: [AuthGuard]
 })
-export class PagesRoutingModule { }
+export class MonthRoutingModule { }
