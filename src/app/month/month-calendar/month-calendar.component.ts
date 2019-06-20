@@ -1,48 +1,40 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, Inject } from '@angular/core';
-import { DateAdapter, NativeDateAdapter, MatCalendar, MatDateFormats, MAT_DATE_FORMATS } from '@angular/material';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, Inject, ElementRef } from '@angular/core';
+import { DateAdapter, NativeDateAdapter, MatCalendar, MatCalendarView, MatDateFormats, MAT_DATE_FORMATS } from '@angular/material';
 import * as moment from 'moment';
 
 const YEARS_PER_PAGE = 24;
 const DAYS_PER_WEEK = 7;
 
 export class CustomDateAdapter extends NativeDateAdapter {
-  private localeData = moment.localeData('en');
-
   getFirstDayOfWeek(): number {
     return 1;
   }
 
-  getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
-    switch (style) {
-      case 'long':
-        return this.localeData.weekdays();
-      case 'short':
-        return this.localeData.weekdaysShort();
-      case 'narrow':
-        return this.localeData.weekdaysShort();
-    }
+  format(date: Date, displayFormat: Object): string {
+    moment.locale('en'); // Choose the locale
+    let formatString = (displayFormat === 'input') ? 'DD.MM.YYYY' : 'LLL';
+    return moment(date).format(formatString);
   }
 }
 
 @Component({
   selector: 'app-month-calendar',
   templateUrl: './month-calendar.component.html',
-  styleUrls: ['./month-calendar.component.scss'],
-  providers: [
-    { provide: DateAdapter, useClass: CustomDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: MAT_DATE_FORMATS }
-  ]
+  styleUrls: ['./month-calendar.component.scss']
 })
 export class MonthCalendarComponent implements OnInit {
 
   @ViewChild(MatCalendar) calendar: MatCalendar<Date>;
-  @Input() extraVisitDates: Date[] = [];
+  selectedEventDates: Date[] = [new Date('2019-05-24T00:00:00.000Z'),
+    new Date('2019-05-20T00:00:00.000Z'),
+    new Date('2019-05-10T00:00:00.000Z')];
   @Output() selectedDate: EventEmitter<Date> = new EventEmitter();
   today: Date;
   activeDate: Date;
 
   constructor(
     @Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
+    private element: ElementRef,
     private _adapter: DateAdapter<Date>
   ) {
     this.today = this._adapter.today();
@@ -50,6 +42,9 @@ export class MonthCalendarComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.selectedEventDates);
+    //this.addPoint(true, aria);
+    this.addSelectedDates();
   }
 
   getMonthsDates() {
@@ -81,7 +76,7 @@ export class MonthCalendarComponent implements OnInit {
   }
 
   addPointsToDates(date: Date) {
-    const extraDatesTime = this.extraVisitDates.map(d => String(d.getTime()));
+    const extraDatesTime = this.selectedEventDates.map(d => String(d.getTime()));
     const isExtra = extraDatesTime.includes(String(date.getTime()));
     const aria = this._adapter.format(date, this._dateFormats.display.dateA11yLabel);
 
@@ -91,7 +86,7 @@ export class MonthCalendarComponent implements OnInit {
   }
 
   addPointsToMonths(month: number) {
-    const extraAliases = this.extraVisitDates.map(d => {
+    const extraAliases = this.selectedEventDates.map(d => {
       const m = this._adapter.getMonth(d);
       return this._adapter.format(this._adapter.createDate(this._adapter.getYear(d), m, 1), this._dateFormats.display.monthYearA11yLabel);
     });
@@ -104,4 +99,25 @@ export class MonthCalendarComponent implements OnInit {
     }
   }
 
+  addPoint(isExtra: boolean, aria: string) {
+    const el = this.element.nativeElement.querySelector(`[aria-label="${aria}"]`);
+    console.log(el);
+    if (this.calendar.currentView === 'month') {
+      if (isExtra && el) {
+        el.querySelector('.mat-calendar-body-cell-content').classList.add('mat-calendar-body-selected');
+      }
+    }
+  }
+
+  addSelectedDates() {
+    console.log('1');
+    console.log(this.calendar);
+    console.log(this.calendar.startView);
+
+    if (this.calendar.activeDate ) {
+      console.log('2');
+      const el = this.element.nativeElement.querySelector('.mat-calendar-body-cell-content');
+      console.log(el);
+    }
+  }
 }
