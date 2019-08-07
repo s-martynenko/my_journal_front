@@ -6,10 +6,13 @@ import { MonthPageComponent } from './month-page/month-page.component';
 import { MonthPaginationComponent } from './month-pagination/month-pagination.component';
 import { AddEventBtnComponent } from './add-event-btn/add-event-btn.component';
 import { NewEventDialogComponent } from './new-event-dialog/new-event-dialog.component';
-import { CustomDateAdapter, MonthCalendarComponent } from './month-calendar/month-calendar.component';
+
 import { EventsListComponent } from './events-list/events-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatNativeDateModule, DateAdapter } from '@angular/material';
+import { DpDatePickerModule } from 'ng2-date-picker';
+import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,10 +27,12 @@ import { MatNativeDateModule, DateAdapter } from '@angular/material';
     CommonModule,
     SharedModule,
     MonthRoutingModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    DpDatePickerModule,
+    FormsModule
   ],
   providers: [
-    { provide: DateAdapter, useClass: CustomDateAdapter}
+
   ]
 })
 export class MonthModule { }

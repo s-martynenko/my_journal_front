@@ -1,3 +1,7 @@
 <div class="calendar-block">
-  <mat-calendar></mat-calendar>
+  <dp-day-calendar
+    [(ngModel)]="selectedDatepickerDate"
+    [theme]="'dp-material'"
+    [config]="dayPickerConfig"
+    (onSelect)="dateSelection($event)"></dp-day-calendar>
 </div>
